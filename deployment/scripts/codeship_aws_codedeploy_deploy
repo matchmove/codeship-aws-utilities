@@ -19,7 +19,7 @@ aws deploy push --application-name $APPLICATION_NAME --description "$COMMIT_MESS
 
 echo "Creating new Deployment: $VERSION_NAME"
 
-deployment_id=`aws deploy create-deployment --application-name $APPLICATION_NAME --deployment-group-name $DEPLOYMENT_GROUP_NAME --description "$COMMIT_MESSAGE" --s3-location bucket=$S3_BUCKET,key=$FILE_NAME,bundleType=zip | jq -r .deploymentId`
+deployment_id=`aws deploy create-deployment --application-name $APPLICATION_NAME --deployment-group-name $DEPLOYMENT_GROUP_NAME --description "$COMMIT_MESSAGE" --s3-location bucket=$S3_BUCKET,key=$APPLICATION_NAME/$FILE_NAME,bundleType=zip | jq -r .deploymentId`
 
 echo "Validating deployment: $deployment_id"
 codeship_aws codedeploy_deploy_validation "$deployment_id"
