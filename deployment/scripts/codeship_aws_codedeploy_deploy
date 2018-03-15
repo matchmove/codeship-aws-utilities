@@ -15,7 +15,7 @@ FILE_NAME=$VERSION_NAME.zip
 DEPLOYMENT_FILE_NAME=/tmp/$FILE_NAME
 S3_PATH=s3://$S3_BUCKET/$APPLICATION_NAME/$FILE_NAME
 
-aws deploy push --application-name $APPLICATION_NAME --description "$COMMIT_MESSAGE" --ignore-hidden-files --s3-location $S3_PATH --source $APPLICATION_FOLDER > /dev/null
+aws deploy push --application-name $APPLICATION_NAME --description "$COMMIT_MESSAGE" --s3-location $S3_PATH --source $APPLICATION_FOLDER > /dev/null
 
 echo "Creating new Deployment: $VERSION_NAME"
 
